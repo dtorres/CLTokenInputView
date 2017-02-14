@@ -67,7 +67,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     self.fieldLabel.hidden = YES;
 
     self.intrinsicContentHeight = STANDARD_ROW_HEIGHT;
-    [self repositionViews];
+    [self setNeedsLayout];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -132,7 +132,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     [self onTextFieldDidChange:self.textField];
 
     [self updatePlaceholderTextVisibility];
-    [self repositionViews];
+    [self setNeedsLayout];
 }
 
 - (void)removeToken:(CLToken *)token
@@ -158,7 +158,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
         [self.delegate tokenInputView:self didRemoveToken:removedToken];
     }
     [self updatePlaceholderTextVisibility];
-    [self repositionViews];
+    [self setNeedsLayout];
 }
 
 - (NSArray *)allTokens
@@ -513,7 +513,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     }
 
     if (oldFieldName == nil || ![oldFieldName isEqualToString:fieldName]) {
-        [self repositionViews];
+        [self setNeedsLayout];
     }
 }
 
@@ -532,7 +532,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     if (_fieldView != nil) {
         [self addSubview:_fieldView];
     }
-    [self repositionViews];
+    [self setNeedsLayout];
 }
 
 - (void)setPlaceholderText:(NSString *)placeholderText
@@ -555,7 +555,7 @@ static CGFloat const FIELD_MARGIN_X = 4.0; // Note: Same as CLTokenView.PADDING_
     if (_accessoryView != nil) {
         [self addSubview:_accessoryView];
     }
-    [self repositionViews];
+    [self setNeedsLayout];
 }
 
 
